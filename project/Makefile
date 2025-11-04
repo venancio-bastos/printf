@@ -3,15 +3,15 @@ NAME = libftprintf.a
 CC = cc
 CFLAGS = -Wall -Werror -Wextra
 
-SRC = 
+SRC= $(shell find . -name "*.c")
 
-OBJ =
+OBJ = $(SRC:.c=.o)
 
 RM = rm -rf
 
 all: $(NAME)
 
-%.o: %.c printf.h
+%.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@
 
 $(NAME): $(OBJ)
@@ -24,6 +24,5 @@ fclean: clean
 	$(RM) $(NAME)
 
 re: fclean all
-	rm -f
 
 .PHONY: all clean fclean re
